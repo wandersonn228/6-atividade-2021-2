@@ -13,6 +13,7 @@ const Menu = () => {
                         <Link className="nav-link" to="/disciplinas">Disciplina</Link>
                         <Link className="nav-link" to="/professores">Professores</Link>
                         <Link className="nav-link" to="/alunos">Alunos</Link>
+
                     </Nav>
                 </Container>
             </Navbar>
