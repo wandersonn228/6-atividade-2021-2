@@ -1,11 +1,11 @@
 import React from 'react'
-import { Col, Form, Row, Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom';
-import { FaCheck, FaArrowLeft } from 'react-icons/fa';
-import Box from '../../components/Box'
+import { Col, Form, Button, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import { FaArrowLeft, FaCheck } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import Box from '../../components/Box';
 
-const FormCursos = () => {
+const FormDisciplina = () => {
 
 
     const { register, handleSubmit, formState: { errors } } = useForm()
@@ -15,7 +15,7 @@ const FormCursos = () => {
     }
     return (
         <>
-            <Box title="Cursos">
+            <Box title="Disciplinas">
                 <Form>
                     <Form.Group as={Row} className="mb-3" controlId="nome">
                         <Form.Label column sm={2}> Nome :</Form.Label>
@@ -24,18 +24,11 @@ const FormCursos = () => {
                             {errors.nome && <span className="text-danger">Campo Obrigatório</span>}
                         </Col>
                     </Form.Group>
-                    <Form.Group as={Row} className="mb-3" controlId="duracao">
-                        <Form.Label column sm={2}> Duração : </Form.Label>
+                    <Form.Group as={Row} className="mb-3" controlId="curso">
+                        <Form.Label column sm={2}> Curso : </Form.Label>
                         <Col sm={10}>
-                            <Form.Control type="number" {...register("duracao", { required: true })} />
-                            {errors.duracao && <span className="text-danger">Campo Obrigatório</span>}
-                        </Col>
-                    </Form.Group>
-                    <Form.Group as={Row} className="mb-3" controlId="modalidade">
-                        <Form.Label column sm={2}> Modalidade : </Form.Label>
-                        <Col sm={10}>
-                            <Form.Control type="text" {...register("modalidade", { required: true })} />
-                            {errors.modalidade && <span className="text-danger">Campo Obrigatório</span>}
+                            <Form.Control type="text" {...register("curso", { required: true })} />
+                            {errors.curso && <span className="text-danger">Campo Obrigatório</span>}
                         </Col>
                     </Form.Group>
                     <div className="text-center">
@@ -48,4 +41,4 @@ const FormCursos = () => {
     )
 }
 
-export default FormCursos
+export default FormDisciplina
