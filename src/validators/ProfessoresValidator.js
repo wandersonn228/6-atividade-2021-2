@@ -3,7 +3,7 @@ import mensagens from "./mensagens"
 const ProfessoresValidator = {
     nome: {
         required: mensagens.required,
-        maxLength: { value: 50, message: mensagens.maxLength + ': 50'},
+        maxLength: { value: 50, message: mensagens.maxLength + ': 50' },
     },
 
     cpf: {
@@ -29,7 +29,7 @@ const ProfessoresValidator = {
         maxLength: { value: 20, message: mensagens.maxLength + ': 20' },
     },
 
-    cep: { 
+    cep: {
         maxLength: { value: 9, message: mensagens.maxLength + ': 9' },
     },
 
