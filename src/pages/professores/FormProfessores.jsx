@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Col, Form, Row, Button } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import { FaArrowLeft, FaCheck } from 'react-icons/fa'
@@ -11,43 +11,39 @@ import validador from '../../validators/ProfessoresValidator'
 
 
 const FormProfessores = (props) => {
-
-
     const { register, handleSubmit, setValue, formState: { errors } } = useForm()
-
+    useEffect(() => {
+        const id = props.match.params.id
+        if (id) {
+            const professores = ProfessoresService.get(id)
+            for (let campo in professores) {
+                setValue(campo, professores[campo])
+            }
+        }
+    }, [props, setValue])
     function enviarDados(dados) {
-        ProfessoresService.create(dados)
+        const id = props.match.params.id
+        id ? ProfessoresService.update(dados, id) : ProfessoresService.create(dados)
         props.history.push('/professores')
     }
-
     function handleChange(event) {
         const name = event.target.name
         const mascara = event.target.getAttribute('mask')
-
         let valor = unMask(event.target.value)
         valor = mask(valor, mascara)
-
         setValue(name, valor)
     }
-
     function handleCep(event) {
-
         const valor = unMask(event.target.value)
-
         apiCep.get(`/ws/${valor}/json/`).then(resultado => {
             const endereco = resultado.data
-
             setValue('logradouro', endereco.logradouro)
             setValue('bairro', endereco.bairro)
             setValue('complemento', endereco.complemento)
             setValue('uf', endereco.uf)
             setValue('municipio', endereco.localidade)
-
-
         })
-
     }
-
 
     return (
         <>
@@ -121,7 +117,7 @@ const FormProfessores = (props) => {
                         <Col sm={10}>
                             <Form.Control type="text" {...register("uf")} />
                         </Col>
-                        </Form.Group><Form.Group as={Row} className="mb-3" controlId="municipio">
+                    </Form.Group><Form.Group as={Row} className="mb-3" controlId="municipio">
                         <Form.Label column sm={2}> Município :</Form.Label>
                         <Col sm={10}>
                             <Form.Control type="text" {...register("municipio")} />

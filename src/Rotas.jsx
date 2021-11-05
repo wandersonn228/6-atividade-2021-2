@@ -18,12 +18,16 @@ const Rotas = () => {
                 <Route exact path="/" component={Curso} />
                 <Route exact path="/cursos" component={Curso} />
                 <Route exact path="/cursos/create" component={FormCursos} />
+                <Route exact path="/cursos/:id" component={FormCursos} />
                 <Route exact path="/alunos" component={Alunos} />
                 <Route exact path="/alunos/create" component={FormAlunos} />
+                <Route exact path="/alunos/:id" component={FormAlunos} />
                 <Route exact path="/disciplinas" component={Disciplina} />
                 <Route exact path="/disciplinas/create" component={FormDisciplina} />
+                <Route exact path="/disciplinas/:id" component={FormDisciplina} />
                 <Route exact path="/professores" component={Professores} />
                 <Route exact path="/professores/create" component={FormProfessores} />
+                <Route exact path="/professores/:id" component={FormProfessores} />
             </Switch>
         </Container >
     )
